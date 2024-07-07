@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+    <h2><%= title %></h2>
+    <form action="/productos/editarProducto/<%= producto.idProducto %>" method="POST">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" value="<%= producto.nombre %>" required>
+        </div>
+        <div class="form-group">
+            <label for="precio">Precio:</label>
+            <input type="number" id="precio" name="precio" value="<%= producto.precio %>" required>
+        </div>
+        <div class="form-group">
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" rows="4" required><%= producto.descripcion %></textarea>
+        </div>
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

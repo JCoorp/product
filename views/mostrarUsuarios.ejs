@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuarios</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+    <link rel="stylesheet" href="/css/estilosTabla.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('encabezado', { title: 'Lista de Usuarios' }) %>
+    <h1>Lista de Usuarios</h1>
+    <table class="tabla-usuarios">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Celular</th>
+                <th>Correo</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% usuarios.forEach(usuario => { %>
+                <tr>
+                    <td><%= usuario.idusuario %></td>
+                    <td><%= usuario.nombre %></td>
+                    <td><%= usuario.celular %></td>
+                    <td><%= usuario.correo %></td>
+                    <td>
+                        <form class="eliminar-form" method="POST">
+                            <input type="hidden" name="id" value="<%= usuario.idusuario %>">
+                            <button type="submit" class="btn-eliminar">Eliminar</button>
+                        </form>
+                        <form action="/usuarios/editarUsuario/<%= usuario.idusuario %>" method="GET">
+                            <button type="submit" class="btn-editar">Editar</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    <%- include('pie') %>
+    <script src="/js/eliminarUsuario.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+    <h2><%= title %></h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% productos.forEach(producto => { %>
+                <tr>
+                    <td><%= producto.idProducto %></td>
+                    <td><%= producto.nombre %></td>
+                    <td><%= producto.precio %></td>
+                    <td><%= producto.descripcion %></td>
+                    <td>
+                        <div style="display: flex; gap: 5px; justify-content: center;">
+                            <form action="/productos/eliminarProducto/<%= producto.idProducto %>" method="POST">
+                                <button type="submit" class="delete-button" data-product-id="<%= producto.idProducto %>">Eliminar</button>
+                            </form>
+                            <form action="/productos/editarProducto/<%= producto.idProducto %>" method="GET">
+                                <button type="submit" class="edit-button">Editar</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <script src="/js/form.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<%- include('encabezado') %>
+
+<h2>Agregar Usuario</h2>
+<form action="/usuarios/agregarUsuario" method="POST">
+    <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+    </div>
+    <div class="form-group">
+        <label for="celular">Celular:</label>
+        <input type="text" id="celular" name="celular" required>
+    </div>
+    <div class="form-group">
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo" required>
+    </div>
+    <button type="submit" class="large">Agregar</button>
+</form>
+<button type="button" class="large" onclick="location.href='/usuarios/mostrarUsuarios'">Mostrar Usuarios</button>
+<button type="button" class="large" onclick="location.href='/productos/agregarProducto'">Agregar Producto</button>
+
+<%- include('pie') %>
